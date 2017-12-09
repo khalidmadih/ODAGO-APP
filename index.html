@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ondago</title>
+
+
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+
+	<!-- LINK TO FIREBASE GOES HERE -->
+	<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyCkWRZNjvxfnZGrUWsh4pMTvf6QQ-KYDfY",
+  	authDomain: "weatherport-1234.firebaseapp.com",
+  	databaseURL: "https://weatherport-1234.firebaseio.com",
+  	projectId: "weatherport-1234",
+  	storageBucket: "weatherport-1234.appspot.com",
+  	messagingSenderId: "727567112121"
+  };
+  firebase.initializeApp(config);
+</script>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+	<style>
+	body {
+		background: url(https://www.mouserunner.com/images/Weather5.jpg);
+		background-size:100%;
+		background-repeat: no-repeat;
+		width: 100%;
+	}
+	</style>
+<div class="container">
+	<br>
+	<!-- Jumbotron -->
+	<div class="jumbotron">
+		<h1 class="text-center">Ondago!</h1>
+</div>
+	<div class="row">
+		<!-- Sign-Up Panel-->
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Information</h3>
+				</div>
+				<div class="panel-body">
+					<!-- Sign-up Form (note the various input "types")-->
+					<form role="form">
+						<div class="form-group">
+							<label for="departure-input">Departure City:</label>
+							<input class="form-control" id="departure-input" type="text">
+						</div>
+						<div class="form-group">
+							<label for="arrival-input">Arrival City:</label>
+							<input class="form-control" id="arrival-input" type="text">
+						</div>
+						<div class="form-group">
+							<label for="date-input">Arrival Date:</label>
+							<input class="form-control" id="date-input" type="date">
+						</div>
+						<div class="form-group">
+							<label for="time-input">Arrival Time:</label>
+							<input class="form-control" id="time-input" type="time">
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- Arrival Weather -->
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Flight Details</h3>
+						</div>
+						<div class="table" id="weatherInfo">
+							<td id="airport-display">table area</h2>
+							<h4 id="flight-display">123 ABC</h4>
+							<h4 id="date-display">mm/dd/yyy</h4>
+							<h4 id="currentWeather-display">weather now</h4>
+							<h4 id="arrivalWeather-display">Weather uppon arrival</h4>
+						</div>
+					</div>
+				</div>
+
+						<!-- Arrival Weather -->
+				<div class="col-lg-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Temp</h3>
+						</div>
+						<div class="panel-body" id="weatherInfo">
+							<!-- city  -->
+							<div><h2 id= "destination-city">City</h2></div>
+							<h3 id="date-display">mm/dd/yyy</h4>
+							<h4 id="description-display">Weather description</h4>
+							<!-- temp -->
+							<div><h3 id= "destination-temp">Temp</h2><img src="">Immage</div>
+							<!-- description -->
+							<!-- <h2 id="airport-display">LAX</h2> -->
+							<!-- <h4 id="flight-display">123 ABC</h4> -->
+							
+							<!-- <h4 id="currentWeather-display">weather now</h4> -->
+							<!-- <h4 id="arrivalWeather-display">Weather uppon arrival</h4> -->
+						</div>
+					</div>
+				</div>
+
+			
+		</div>
+	</body>
+</html>
