@@ -53,6 +53,7 @@
                             <div class="form-group">
                                 <input class="btn btn-outline-success" id="search-flight" type="submit" value="Submit">
                             </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -101,30 +102,29 @@
                         <h3 class="panel-title">Weather Forecasts</h3>
                     </div>
                     <div class="panel-body" id="weatherInfo">
-                        <!-- city  -->
-                        <div>
-                            <h2 id="destination-city">New York</h2></div>
-                        <h3 id="date-display">12/12/2017</h4>
-							<h4 id="description-display">Sunny</h4>
-							<!-- temp -->
-							<div><h3 id= "destination-temp">54 F</h2><img src=""></div>
-							
-						</div>
-					</div>
-				</div>			
-		</div>
- </div>
-    <div class="footer">
-       <P> © 2017 Copyright: The Meteors</P> 
+                        <div class="col-sm-12">
+                            <h2 id="destination-city">New York</h2>
+                            <h5 id="date-display">12/12/2017</h5>
+                            <h4 id="description-display">Sunny</h4>
+                        </div>
+                        <div class="col-sm-2"><img id="weather-icon" src="http://openweathermap.org/img/w/01d.png"></div>
+                        <div class="col-sm-10">
+                            <h1 id="destination-temp">54 F</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <P> © 2017 Copyright: The Meteors</P>
+        </div>
     </div>
+    <!-- Script links are all listed after this : -->
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+</body>
 
-<!-- Script links are all listed after this : -->
-
-<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <script src="assets/javascript/app.js"></script>
-
-	</body>
 </html>

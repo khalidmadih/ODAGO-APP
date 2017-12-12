@@ -47,12 +47,15 @@ $(document).ready(function() {
                 var tempConvertedF = Math.round(((response.main.temp - 273.15) * 1.8) + 32);
                 var tempConvertedC = Math.round(response.main.temp-273.15);
                 console.log("C= " + tempConvertedC);
+                var apiIcon = "http://openweathermap.org/img/w/"+response.weather[0].icon+".png";
+                console.log("this is icon :" +apiIcon);
                 
                 $("#destination-city").text(response.name);
                 $("#date-display").text(response.departureDate);
                 $("#description-display").text(response.weather[0].description);
                 console.log(response.weather[0].description);
                 $("#destination-temp").text(tempConvertedF + "°F" + " / "+ tempConvertedC + "°C");
+                $("#weather-icon").attr("src", apiIcon);
 
             });
 
