@@ -1,115 +1,130 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Ondago</title>
-
-
-
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery.js"></script>
-
-	<!-- LINK TO FIREBASE GOES HERE -->
-	<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-  	apiKey: "AIzaSyCkWRZNjvxfnZGrUWsh4pMTvf6QQ-KYDfY",
-  	authDomain: "weatherport-1234.firebaseapp.com",
-  	databaseURL: "https://weatherport-1234.firebaseio.com",
-  	projectId: "weatherport-1234",
-  	storageBucket: "weatherport-1234.appspot.com",
-  	messagingSenderId: "727567112121"
-  };
-  firebase.initializeApp(config);
-</script>
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ondago</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
+
 <body>
-	<style>
-	body {
-		background: url(https://www.mouserunner.com/images/Weather5.jpg);
-		background-size:100%;
-		background-repeat: no-repeat;
-		width: 100%;
-	}
-	</style>
-<div class="container">
-	<br>
-	<!-- Jumbotron -->
-	<div class="jumbotron">
-		<h1 class="text-center">Ondago!</h1>
-</div>
-	<div class="row">
-		<!-- Sign-Up Panel-->
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Information</h3>
-				</div>
-				<div class="panel-body">
-					<!-- Sign-up Form (note the various input "types")-->
-					<form role="form">
-						<div class="form-group">
-							<label for="departure-input">Departure City:</label>
-							<input class="form-control" id="departure-input" type="text">
-						</div>
-						<div class="form-group">
-							<label for="arrival-input">Arrival City:</label>
-							<input class="form-control" id="arrival-input" type="text">
-						</div>
-						<div class="form-group">
-							<label for="date-input">Arrival Date:</label>
-							<input class="form-control" id="date-input" type="date">
-						</div>
-						<div class="form-group">
-							<label for="time-input">Arrival Time:</label>
-							<input class="form-control" id="time-input" type="time">
-						</div>
-					</div>
-				</div>
-			</div>
-				<!-- Arrival Weather -->
-				<div class="col-lg-8">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Flight Details</h3>
-						</div>
-						<div class="table" id="weatherInfo">
-							<td id="airport-display">table area</h2>
-							<h4 id="flight-display">123 ABC</h4>
-							<h4 id="date-display">mm/dd/yyy</h4>
-							<h4 id="currentWeather-display">weather now</h4>
-							<h4 id="arrivalWeather-display">Weather uppon arrival</h4>
-						</div>
-					</div>
-				</div>
-
-						<!-- Arrival Weather -->
-				<div class="col-lg-4">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Temp</h3>
-						</div>
-						<div class="panel-body" id="weatherInfo">
-							<!-- city  -->
-							<div><h2 id= "destination-city">City</h2></div>
-							<h3 id="date-display">mm/dd/yyy</h4>
-							<h4 id="description-display">Weather description</h4>
+    <div class="container">
+        <br>
+        <!-- Jumbotron -->
+        <div class="jumbotron vertical-center jumbotron-fluid">
+            <h1 class="text-center">Ondago!</h1>
+        </div>
+        <div class="row">
+            <!-- Sign-Up Panel-->
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Flight Search</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="departure-input">Departure City:</label>
+                                <input class="form-control" id="departure-input" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="arrival-input">Arrival City:</label>
+                                <input class="form-control" id="arrival-input" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="date-input">Departure Date:</label>
+                                <input class="form-control" id="date-input" type="date">
+                            </div>
+                            <div class="form-group">
+                                <label for="time-input">Departure Time:</label>
+                                <input class="form-control" id="time-input" type="time">
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-outline-success" id="search-flight" type="submit" value="Submit">
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Arrival Weather -->
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Flight Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table" id="weatherInfo">
+                            <table class="table table-striped" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Flight#</th>
+                                        <th scope="col">Departure</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Arrival</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Arrival Gate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td scope="col">12/12/2017</td>
+                                        <td scope="col">AF2456</td>
+                                        <td scope="col">Phoenix</td>
+                                        <td scope="col">7:00 AM</td>
+                                        <td scope="col">New York</td>
+                                        <td scope="col">02:00 PM</td>
+                                        <td scope="col">ON TIME</td>
+                                        <td scope="col">A32</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Arrival Weather -->
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Weather Forecasts</h3>
+                    </div>
+                    <div class="panel-body" id="weatherInfo">
+                        <!-- city  -->
+                        <div>
+                            <h2 id="destination-city">New York</h2></div>
+                        <h3 id="date-display">12/12/2017</h4>
+							<h4 id="description-display">Sunny</h4>
 							<!-- temp -->
-							<div><h3 id= "destination-temp">Temp</h2><img src="">Immage</div>
-							<!-- description -->
-							<!-- <h2 id="airport-display">LAX</h2> -->
-							<!-- <h4 id="flight-display">123 ABC</h4> -->
+							<div><h3 id= "destination-temp">54 F</h2><img src=""></div>
 							
-							<!-- <h4 id="currentWeather-display">weather now</h4> -->
-							<!-- <h4 id="arrivalWeather-display">Weather uppon arrival</h4> -->
 						</div>
 					</div>
-				</div>
-
-			
+				</div>			
 		</div>
+ </div>
+    <div class="footer">
+       <P> © 2017 Copyright: The Meteors</P> 
+    </div>
+
+<!-- Script links are all listed after this : -->
+
+<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <script src="assets/javascript/app.js"></script>
+
 	</body>
 </html>

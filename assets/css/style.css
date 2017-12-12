@@ -1,0 +1,39 @@
+body {
+    
+}
+
+th {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background-color: #1a78c2 !important;
+   /* background-image: url("");*/
+    /*background-size: cover;
+    background-repeat: no-repeat;*/
+    color: white;
+}
+
+.jumbotron h1,
+.jumbotron p {
+    color: white !important;
+    align-content: center;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    padding: 1rem;
+    background-color: #1a78c2;
+    text-align: center;
+    color: white;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
