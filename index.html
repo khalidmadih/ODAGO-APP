@@ -37,11 +37,15 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="departure-input">Departure City:</label>
-                                <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code">
+                                <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code" data-name="departure-city">
+                                <input id="departure-city-code" type="hidden">
+                                <input id="departure-city-name" type="hidden">
                             </div>
                             <div class="form-group">
                                 <label for="arrival-input">Arrival City:</label>
-                                <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code">
+                                <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code " data-name="arrival-city">
+                                <input id="arrival-city-code" type="hidden">
+                                <input id="arrival-city-name" type="hidden">
                             </div>
                             <div class="form-group">
                                 <label for="date-input">Departure Date:</label>
@@ -52,7 +56,7 @@
                                 <input class="form-control" id="time-input" type="time">
                             </div>
                             <div class="form-group">
-                                <input class="btn btn-outline-success" id="search-flight" type="submit" value="Submit">
+                                <input class="btn btn-primary" id="search-flight" type="submit" value="Submit">
                             </div>
                         </form>
                     </div>
@@ -100,7 +104,7 @@
             <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Weather Forecasts</h3>
+                        <h3 class="panel-title">Destination Weather Forecasts</h3>
                     </div>
                     <div class="panel-body" id="weatherInfo">
                         <div class="col-sm-12">
