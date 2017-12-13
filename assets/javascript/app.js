@@ -25,6 +25,7 @@ $(document).ready(function() {
     var departureDate;
     var departureTime;
 
+
     //Looking up the city weather
     $("#search-flight").on("click", function(event) {
         event.preventDefault();
@@ -64,7 +65,33 @@ $(document).ready(function() {
 
             });
 
+            SearchFlight ();
+
     });
+
+    function SearchFlight () {
+
+    	var queryURL = "https://aviation-edge.com/api/public/timetable?key=a1abd6-425fb9-25fef7-ce828d-ede24e&iataCode=" +
+            departureAirport + "&type=departure";
+
+            console.log(queryURL);
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+
+            .done(function(response) {
+            	for (var i = response.length - 1; i >= 0; i--) {
+            		console.log(response[i].status);
+            	};
+            	
+
+            	});
+
+
+    };
+
 
     // Auto complete code
 
