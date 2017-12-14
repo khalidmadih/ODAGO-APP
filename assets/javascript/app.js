@@ -43,10 +43,14 @@ $(document).ready(function() {
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
             arrivalCity + "&appid=7e0ce28483067588677241827b3bba6f";
 
+        $(this).css('cursor', 'wait');
+        $(":input").prop("disabled", true); 
+
         $.ajax({
                 url: queryURL,
                 method: "GET"
             })
+            
             // After data comes back from the request
             .done(function(response) {
                 // console.log(queryURL);
@@ -63,6 +67,8 @@ $(document).ready(function() {
                 // console.log(response.weather[0].description);
                 $("#destination-temp").text(tempConvertedF + "°F" + " / " + tempConvertedC + "°C");
                 $("#weather-icon").attr("src", apiIcon);
+                $(":input").prop("disabled", false);
+                $("#search-flight").css('cursor', 'auto');
 
             });
 
@@ -138,7 +144,7 @@ $(document).ready(function() {
 
         $("#departure-display").text(snapshot.val().departureCity + " (" + snapshot.val().departureAirport + ")");
         $("#arrival-display").text(snapshot.val().arrivalCity + " (" + snapshot.val().arrivalAirport + ")");
-        $("#date-display").text(snapshot.val().departureDateFormatted);
+        $("#date-display").text(departureDateFormatted);
 
     	});
 
