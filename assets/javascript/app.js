@@ -133,9 +133,11 @@ $(document).ready(function() {
     	firebase.database().ref().on("value", function(snapshot) {
                 
         var departureDateFormatted = moment(departureDate).format('MM/DD/YYYY');
+        console.log("testing: "+snapshot.val().departureAirport);
+        console.log("testing: "+snapshot.val().arrivalAirport);
 
-        $("#departure-display").text(snapshot.val().departureCity + " (" + departureAirport + ")");
-        $("#arrival-display").text(snapshot.val().arrivalCity+ " (" + arrivalAirport + ")");
+        $("#departure-display").text(snapshot.val().departureCity + " (" + snapshot.val().departureAirport + ")");
+        $("#arrival-display").text(snapshot.val().arrivalCity + " (" + snapshot.val().arrivalAirport + ")");
         $("#date-display").text(snapshot.val().departureDateFormatted);
 
     	});
