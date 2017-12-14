@@ -34,22 +34,29 @@
                     </div>
                     <div class="panel-body">
                         <!-- Sign-up Form (note the various input "types")-->
+                        <div class="alert alert-success">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Successfully submitted!</strong>
+                        </div>
                         <form role="form">
                             <div class="form-group">
                                 <label for="departure-input">Departure City:</label>
-                                <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code" data-name="departure-city">
+                                <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code" data-name="departure-city" pattern="^[a-zA-Z\s]{3,}$" required>
+                                <div class="help-block with-errors"></div>
                                 <input id="departure-city-code" type="hidden">
                                 <input id="departure-city-name" type="hidden">
                             </div>
                             <div class="form-group">
                                 <label for="arrival-input">Arrival City:</label>
-                                <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code " data-name="arrival-city">
+                                <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code " data-name="arrival-city" required>
+                                <div class="help-block with-errors"></div>
                                 <input id="arrival-city-code" type="hidden">
                                 <input id="arrival-city-name" type="hidden">
                             </div>
                             <div class="form-group">
                                 <label for="date-input">Departure Date:</label>
-                                <input class="form-control" id="date-input" type="date">
+                                <input class="form-control" id="date-input" type="date" required>
+                                <div class="help-block with-errors"></div>
                             </div>
                             <!-- <div class="form-group">
                                 <label for="time-input">Departure Time:</label>
@@ -62,29 +69,27 @@
                     </div>
                 </div>
             </div>
-			<div class="col-sm-4">
+            <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Previous Search</h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-sm-12">
-                        	<h5>Departure City/Airport:</h5>
-                        	<h2 id="departure-display">Phoenix</h2>
+                            <h5>Departure City/Airport:</h5>
+                            <h2 id="departure-display">Phoenix</h2>
                         </div>
                         <div class="col-sm-12">
-                        	<h5>Arrival City/Airport:</h5>
-                        	<h2 id="arrival-display">New York</h2>
+                            <h5>Arrival City/Airport:</h5>
+                            <h2 id="arrival-display">New York</h2>
                         </div>
                         <div class="col-sm-12">
-                        	<h5>Departure Date:</h5>
-                        	<h2 id="date-display">11/30/2017</h2>
+                            <h5>Departure Date:</h5>
+                            <h2 id="date-display">11/30/2017</h2>
                         </div>
-                        
                     </div>
                 </div>
             </div>
-
             <!-- Arrival Weather -->
             <div class="col-lg-8">
                 <div class="panel panel-default">
@@ -147,16 +152,13 @@
             <P> © 2017 Copyright: The Meteors</P>
         </div>
     </div>
-    
     <!-- Script links are all listed after this : -->
     <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/javascript/app.js"></script>
-    
-   <!--  Autocomplete scripts -->
-
+    <!--  Autocomplete scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
     <script src="assets/javascript/air-port-codes-api-min.js"></script>
