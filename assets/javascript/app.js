@@ -65,29 +65,50 @@ $(document).ready(function() {
 
             });
 
-            SearchFlight ();
+        SearchFlight();
 
     });
 
-    function SearchFlight () {
+    function SearchFlight() {
 
-    	var queryURL = "https://aviation-edge.com/api/public/timetable?key=a1abd6-425fb9-25fef7-ce828d-ede24e&iataCode=" +
+        var queryURL = "https://aviation-edge.com/api/public/timetable?key=a1abd6-425fb9-25fef7-ce828d-ede24e&iataCode=" +
             departureAirport + "&type=departure";
 
-            console.log(queryURL);
+        console.log(queryURL);
 
-            $.ajax({
+        $.ajax({
                 url: queryURL,
                 method: "GET"
             })
 
             .done(function(response) {
-            	for (var i = response.length - 1; i >= 0; i--) {
-            		console.log(response[i].status);
-            	};
-            	
 
-            	});
+                var parsedResponse = JSON.parse(response);
+
+                // console.log(parsedResponse);
+
+                
+                for (var i = parsedResponse.length - 1; i >= 0; i--) {
+                   
+                   if(arrivalAirport == parsedResponse[i].arrival.iataCode){
+                       
+                       console.log(parsedResponse[i]);
+                   };
+                };
+
+
+
+                // for (var i = parsedResponse.length - 1; i >= 0; i--) {
+                //     // console.log("Arrival test: " +arrivalAirport);
+                //     // console.log("Departure test: " + departureAirport);
+                //     if (arrivalAirport == parsedResponse[i].arrival.iataCode) {
+                //     console.log(parsedResponse[i].arrival.iataCode);
+                //     };
+
+                // };
+
+
+            });
 
 
     };
