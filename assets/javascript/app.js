@@ -30,7 +30,6 @@ $(document).ready(function() {
     //Looking up the city weather
     $("#search-flight").on("click", function(event) {
         event.preventDefault();
-        formValidation();
         
         departureCity = $("#departure-city-name").val().trim();
         departureAirport = $("#departure-city-code").val().trim();
@@ -152,17 +151,7 @@ $(document).ready(function() {
 
     };
 
-    function formValidation() {
-        var $form = $("form"),
-            $successMsg = $(".alert");
-        $form.validator().on("submit", function(e) {
-            if (!e.isDefaultPrevented()) {
-                e.preventDefault();
-                $successMsg.show();
-            }
-        });
-    }
-
+    
     // Auto complete code
 
     $(function() {
