@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <!-- Sign-Up Panel-->
-            <div class="col-lg-12">
+            <div class="col-sm-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Flight Search</h3>
@@ -51,10 +51,10 @@
                                 <label for="date-input">Departure Date:</label>
                                 <input class="form-control" id="date-input" type="date">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="time-input">Departure Time:</label>
                                 <input class="form-control" id="time-input" type="time">
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <input class="btn btn-primary" id="search-flight" type="submit" value="Submit">
                             </div>
@@ -62,6 +62,29 @@
                     </div>
                 </div>
             </div>
+			<div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Previous Search</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                        	<h5>Departure City/Airport:</h5>
+                        	<h2 id="departure-display">Phoenix</h2>
+                        </div>
+                        <div class="col-sm-12">
+                        	<h5>Arrival City/Airport:</h5>
+                        	<h2 id="arrival-display">New York</h2>
+                        </div>
+                        <div class="col-sm-12">
+                        	<h5>Departure Date:</h5>
+                        	<h2 id="date-display">11/30/2017</h2>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
             <!-- Arrival Weather -->
             <div class="col-lg-8">
                 <div class="panel panel-default">

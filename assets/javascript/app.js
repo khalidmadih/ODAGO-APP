@@ -7,15 +7,16 @@ $(document).ready(function() {
 
     // Firebase database settings
     var config = {
-        apiKey: "AIzaSyCkWRZNjvxfnZGrUWsh4pMTvf6QQ-KYDfY",
-        authDomain: "weatherport-1234.firebaseapp.com",
-        databaseURL: "https://weatherport-1234.firebaseio.com",
-        projectId: "weatherport-1234",
-        storageBucket: "weatherport-1234.appspot.com",
-        messagingSenderId: "727567112121"
+        apiKey: "AIzaSyC7gyV-JALb0MsVRDMIIsDLSWNpL1U_we0",
+        authDomain: "ondago-f973b.firebaseapp.com",
+        databaseURL: "https://ondago-f973b.firebaseio.com",
+        projectId: "ondago-f973b",
+        storageBucket: "ondago-f973b.appspot.com",
+        messagingSenderId: "1087050835751"
     };
 
     firebase.initializeApp(config);
+    readFromFirebase ();
 
     //Declaring variables
     var departureCity;
@@ -34,7 +35,7 @@ $(document).ready(function() {
         arrivalCity = $("#arrival-city-name").val().trim();
         arrivalAirport = $("#arrival-city-code").val().trim();
         departureDate = $("#date-input").val().trim();
-        departureTime = $("#time-input").val().trim();
+        // departureTime = $("#time-input").val().trim();
 
         console.log("Departure: " + departureCity + " - " + departureAirport);
         console.log("Arrival: " + arrivalCity + " - " + arrivalAirport);
@@ -66,6 +67,8 @@ $(document).ready(function() {
             });
 
         SearchFlight();
+        addToFirebase();
+        readFromFirebase ();
 
     });
 
@@ -87,13 +90,13 @@ $(document).ready(function() {
 
                 // console.log(parsedResponse);
 
-                
+
                 for (var i = parsedResponse.length - 1; i >= 0; i--) {
-                   
-                   if(arrivalAirport == parsedResponse[i].arrival.iataCode){
-                       
-                       console.log(parsedResponse[i]);
-                   };
+
+                    if (arrivalAirport == parsedResponse[i].arrival.iataCode) {
+
+                        console.log(parsedResponse[i]);
+                    };
                 };
 
 
@@ -110,6 +113,32 @@ $(document).ready(function() {
 
             });
 
+
+    };
+
+    function addToFirebase (){
+
+    	firebase.database().ref().set({
+                    departureCity: departureCity,
+                    departureAirport: departureAirport,
+                    arrivalCity: arrivalCity,
+                    arrivalAirport: arrivalAirport,
+                    departureDate: departureDate
+                });
+
+    };
+
+    function readFromFirebase (){
+
+    	firebase.database().ref().on("value", function(snapshot) {
+                
+        var departureDateFormatted = moment(departureDate).format('MM/DD/YYYY');
+
+        $("#departure-display").text(snapshot.val().departureCity + " (" + departureAirport + ")");
+        $("#arrival-display").text(snapshot.val().arrivalCity+ " (" + arrivalAirport + ")");
+        $("#date-display").text(snapshot.val().departureDateFormatted);
+
+    	});
 
     };
 
