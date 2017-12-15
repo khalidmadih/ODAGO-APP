@@ -26,6 +26,10 @@ $(document).ready(function() {
     var departureDate;
     var departureTime;
 
+    //------variables for flight api:
+    var departureDateFL;
+    var departureTimeFL
+
 
     //Looking up the city weather
     $("#search-flight").on("click", function(event) {
@@ -96,28 +100,38 @@ $(document).ready(function() {
 
                 var parsedResponse = JSON.parse(response);
 
-                // console.log(parsedResponse);
+                console.log(parsedResponse);
 
+                console.log("----" + arrivalAirport);
+                
+                var checkResults = false;
 
-                for (var i = parsedResponse.length - 1; i >= 0; i--) {
-
+                for (var i = 0; i < parsedResponse.length; i++) {
                     if (arrivalAirport == parsedResponse[i].arrival.iataCode) {
+                        console.log("Flight from : " + parsedResponse[i].departure.iataCode + " to " + parsedResponse[i].arrival.iataCode + " : " + parsedResponse[i].flight.iataNumber + " - " + parsedResponse[i].status + " on ");
+                    	checkResults=true;
 
-                        console.log(parsedResponse[i]);
-                    };
+                    	departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('MM/DD/YYYY');
+                    	console.log("Date - "+departureDateFL);
+                    	departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('HH:MM A');
+                    	console.log("time - "+departureDateFL);
+
+                    	var gateF = parsedResponse[i].arrival.gate;
+
+                    	if (gateF === undefined){
+                    		console.log("Not Assigned");
+                    	} else {
+                    		console.log(gateF);
+                    	}
+                    	
+                    }
+                }
+
+                if(!checkResults){
+                	console.log("No results found for this route")
                 };
 
-
-
-                // for (var i = parsedResponse.length - 1; i >= 0; i--) {
-                //     // console.log("Arrival test: " +arrivalAirport);
-                //     // console.log("Departure test: " + departureAirport);
-                //     if (arrivalAirport == parsedResponse[i].arrival.iataCode) {
-                //     console.log(parsedResponse[i].arrival.iataCode);
-                //     };
-
-                // };
-
+ 
 
             });
 
@@ -141,10 +155,8 @@ $(document).ready(function() {
 
         firebase.database().ref().on("value", function(snapshot) {
 
-            var departureDateFormatted = moment(departureDate).format('MM/DD/YYYY');
-            console.log("testing: " + snapshot.val().departureAirport);
-            console.log("testing: " + snapshot.val().arrivalAirport);
-
+            var departureDateFormatted = moment(snapshot.val().departureDate).format('MM/DD/YYYY');
+            
             $("#departure-display").text(snapshot.val().departureCity + " (" + snapshot.val().departureAirport + ")");
             $("#arrival-display").text(snapshot.val().arrivalCity + " (" + snapshot.val().arrivalAirport + ")");
             $("#date-display").text(departureDateFormatted);
