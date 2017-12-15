@@ -121,7 +121,7 @@ $(document).ready(function() {
                     	if (gateF === undefined){
                     		console.log("Not Assigned");
                     	} else {
-                    		console.log(gateF);
+                    		console.log("Gate : " +gateF);
                     	}
                     	
                     }
