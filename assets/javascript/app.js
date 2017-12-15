@@ -4,7 +4,7 @@ $(document).ready(function() {
     // Check JS file linked
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
-$('#date-input').datepicker()
+    $('#date-input').datepicker()
 
     // Firebase database settings
     var config = {
@@ -29,7 +29,15 @@ $('#date-input').datepicker()
 
     //------variables for flight api:
     var departureDateFL;
-    var departureTimeFL
+    var departureTimeFL;
+    var departureAPT;
+    var arrivalAPT;
+    var arrivalTimeFL;
+    var flightNBR;
+    var statusFL
+    var gateFL;
+    var flightResults = [];
+
 
 
     //Looking up the city weather
@@ -104,37 +112,58 @@ $('#date-input').datepicker()
                 console.log(parsedResponse);
 
                 console.log("----" + arrivalAirport);
-                
+
                 var checkResults = false;
 
                 for (var i = 0; i < parsedResponse.length; i++) {
                     if (arrivalAirport == parsedResponse[i].arrival.iataCode) {
                         console.log("Flight from : " + parsedResponse[i].departure.iataCode + " to " + parsedResponse[i].arrival.iataCode + " : " + parsedResponse[i].flight.iataNumber + " - " + parsedResponse[i].status + " on ");
-                    	checkResults=true;
+                        checkResults = true;
 
-                    	departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('MM/DD/YYYY');
-                    	console.log("Date - "+departureDateFL);
-                    	departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('HH:MM A');
-                    	console.log("time - "+departureDateFL);
+                        departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('MM/DD/YYYY');
+                        console.log("Date : " + departureDateFL);
+                        departureTimeFL = moment(parsedResponse[i].departure.scheduledTime).format('HH:MM A');
+                        console.log("Time : " + departureTimeFL);
 
-                    	var gateF = parsedResponse[i].arrival.gate;
+                        arrivalTimeFL = moment(parsedResponse[i].arrival.scheduledTime).format('HH:MM A');
 
-                    	if (gateF === undefined){
-                    		console.log("Not Assigned");
-                    	} else {
-                    		console.log("Gate : " +gateF);
-                    	}
-                    	
+                        gateFL = parsedResponse[i].arrival.gate;
+
+                        if (gateFL === undefined) {
+                            console.log("Not Assigned");
+                        } else {
+                            console.log("Gate : " + gateFL);
+                        }
+
+                        departureAPT = parsedResponse[i].departure.iataCode;
+                        arrivalAPT = parsedResponse[i].arrival.iataCode;
+                        flightNBR = parsedResponse[i].flight.iataNumber;
+                        statusFL = parsedResponse[i].status;
+
+                        flightResults.push({
+                            "Date": departureDateFL,
+                            "Flight#": flightNBR,
+                            "Departure": departureAPT,
+                            "TimeD": departureTimeFL,
+                            "Arrival": arrivalAPT,
+                            "TimeA": arrivalTimeFL,
+                            "Status": statusFL,
+                            "Gate": gateFL
+                        });
+
+                        console.log(flightResults);
+
                     }
                 }
 
-                if(!checkResults){
-                	console.log("No results found for this route")
+                if (!checkResults) {
+                    console.log("No results found for this route")
                 };
 
- 
-
             });
+
+         setTimeout(BuildFlightResultTable, 8000);
+         // BuildFlightResultTable();   
 
 
     };
@@ -157,7 +186,7 @@ $('#date-input').datepicker()
         firebase.database().ref().on("value", function(snapshot) {
 
             var departureDateFormatted = moment(snapshot.val().departureDate).format('MM/DD/YYYY');
-            
+
             $("#departure-display").text(snapshot.val().departureCity + " (" + snapshot.val().departureAirport + ")");
             $("#arrival-display").text(snapshot.val().arrivalCity + " (" + snapshot.val().arrivalAirport + ")");
             $("#date-display").text(departureDateFormatted);
@@ -166,7 +195,21 @@ $('#date-input').datepicker()
 
     };
 
-
+    function BuildFlightResultTable () {
+        $('#myTable').DataTable({
+            data: flightResults,
+            columns: [
+                { data: 'Date' },
+                { data: 'Flight#' },
+                { data: 'Departure' },
+                { data: 'TimeD' },
+                { data: 'Arrival' },
+                { data: 'TimeA' },
+                { data: 'Status' },
+                { data: 'Gate' }
+            		]
+        });
+    }
 
     // Auto complete code
 
