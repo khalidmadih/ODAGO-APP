@@ -4,6 +4,7 @@ $(document).ready(function() {
     // Check JS file linked
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
+$('#date-input').datepicker()
 
     // Firebase database settings
     var config = {
