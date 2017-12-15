@@ -163,7 +163,7 @@ $(document).ready(function() {
 
             });
 
-         setTimeout(BuildFlightResultTable, 3000);
+         setTimeout(BuildFlightResultTable, 5000);
          // BuildFlightResultTable();   
 
 
