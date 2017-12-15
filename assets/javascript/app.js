@@ -159,18 +159,16 @@ $(document).ready(function() {
 
                 if (!checkResults) {
                     console.log("No results found for this route")
+                }
+
+                else {
+                    BuildFlightResultTable();
                 };
 
             });
 
-        setTimeout(BuildFlightResultTable, 5500);
-       
-        // BuildFlightResultTable();   
-
-
     };
 
-    
     BuildFlightResultTable();
 
     function addToFirebase() {
