@@ -131,6 +131,7 @@ $(document).ready(function() {
 
                         if (gateFL === undefined) {
                             console.log("Not Assigned");
+                            gateFL = "TBD";
                         } else {
                             console.log("Gate : " + gateFL);
                         }
@@ -162,7 +163,7 @@ $(document).ready(function() {
 
             });
 
-         setTimeout(BuildFlightResultTable, 8000);
+         setTimeout(BuildFlightResultTable, 3000);
          // BuildFlightResultTable();   
 
 
