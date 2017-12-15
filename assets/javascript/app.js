@@ -38,13 +38,11 @@ $(document).ready(function() {
     var gateFL;
     var flightResults = [];
 
-
-
     //Looking up the city weather
     $("#search-flight").on("click", function(event) {
         event.preventDefault();
 
-
+        //Collecting data from the form
         departureCity = $("#departure-city-name").val().trim();
         departureAirport = $("#departure-city-code").val().trim();
         arrivalCity = $("#arrival-city-name").val().trim();
@@ -55,12 +53,15 @@ $(document).ready(function() {
         console.log("Departure: " + departureCity + " - " + departureAirport);
         console.log("Arrival: " + arrivalCity + " - " + arrivalAirport);
 
+       // Openweathermap settings
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
             arrivalCity + "&appid=7e0ce28483067588677241827b3bba6f";
 
+        //Setting the cursor and form inputs to show form submitted
         $(this).css('cursor', 'wait');
         $(":input").prop("disabled", true);
 
+       //Making the ajax call for weather data
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -68,14 +69,13 @@ $(document).ready(function() {
 
             // After data comes back from the request
             .done(function(response) {
-                // console.log(queryURL);
-                // console.log(response);
+             	//Variables to manipulate temprature
                 var tempConvertedF = Math.round(((response.main.temp - 273.15) * 1.8) + 32);
                 var tempConvertedC = Math.round(response.main.temp - 273.15);
-                // console.log("C= " + tempConvertedC);
+                //Building the link to the weather icon
                 var apiIcon = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-                // console.log("this is icon :" +apiIcon);
-
+               
+                //Replacing the data in the page/panel
                 $("#destination-city").text(response.name);
                 $("#date-display").text(response.departureDate);
                 $("#description-display").text(response.weather[0].description);
@@ -87,19 +87,24 @@ $(document).ready(function() {
 
             });
 
-        SearchFlight();
+         //Add waether data to Firebase
         addToFirebase();
+        //Read data from Firebase
         readFromFirebase();
+        //Search for the flights
+        SearchFlight();        
 
     });
 
+    //Function to search for flights
     function SearchFlight() {
 
+        //Api settings
         var queryURL = "https://aviation-edge.com/api/public/timetable?key=a1abd6-425fb9-25fef7-ce828d-ede24e&iataCode=" +
             departureAirport + "&type=departure";
-
         console.log(queryURL);
 
+       //Making the ajax call to flights api
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -107,28 +112,26 @@ $(document).ready(function() {
 
             .done(function(response) {
 
+                //Parse the result - because it's a string
                 var parsedResponse = JSON.parse(response);
-
                 console.log(parsedResponse);
-
-                console.log("----" + arrivalAirport);
-
+                
+                //Looping around the results
                 var checkResults = false;
 
                 for (var i = 0; i < parsedResponse.length; i++) {
                     if (arrivalAirport == parsedResponse[i].arrival.iataCode) {
+                        //Formating the results & logging to the console for debugging
                         console.log("Flight from : " + parsedResponse[i].departure.iataCode + " to " + parsedResponse[i].arrival.iataCode + " : " + parsedResponse[i].flight.iataNumber + " - " + parsedResponse[i].status + " on ");
                         checkResults = true;
-
                         departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('MM/DD/YYYY');
                         console.log("Date : " + departureDateFL);
                         departureTimeFL = moment(parsedResponse[i].departure.scheduledTime).format('HH:MM A');
                         console.log("Time : " + departureTimeFL);
-
                         arrivalTimeFL = moment(parsedResponse[i].arrival.scheduledTime).format('HH:MM A');
-
                         gateFL = parsedResponse[i].arrival.gate;
 
+                        //Replae with TBD if Gate is undefined
                         if (gateFL === undefined) {
                             console.log("Not Assigned");
                             gateFL = "TBD";
@@ -136,11 +139,13 @@ $(document).ready(function() {
                             console.log("Gate : " + gateFL);
                         }
 
+                        //assignig the rest of the data to variables
                         departureAPT = parsedResponse[i].departure.iataCode;
                         arrivalAPT = parsedResponse[i].arrival.iataCode;
                         flightNBR = parsedResponse[i].flight.iataNumber;
                         statusFL = parsedResponse[i].status;
 
+                        //Pushing the results to a clean array of objects
                         flightResults.push({
                             "Date": departureDateFL,
                             "Flight#": flightNBR,
@@ -153,24 +158,23 @@ $(document).ready(function() {
                         });
 
                         console.log(flightResults);
-
                     }
                 }
 
+                //Condition checking for no results
                 if (!checkResults) {
                     console.log("No results found for this route")
                 }
-
+                //If there are results, build the flights result table
                 else {
                     BuildFlightResultTable();
                 };
-
             });
-
     };
 
     BuildFlightResultTable();
 
+    //Function to add search input to firebase
     function addToFirebase() {
 
         firebase.database().ref().set({
@@ -180,11 +184,10 @@ $(document).ready(function() {
             arrivalAirport: arrivalAirport,
             departureDate: departureDate
         });
-
     };
 
+    //Function to read from firebase and populate page
     function readFromFirebase() {
-
 
         firebase.database().ref().on("value", function(snapshot) {
 
@@ -195,9 +198,9 @@ $(document).ready(function() {
             $("#date-display").text(departureDateFormatted);
 
         });
-
     };
 
+    //Function to build the flight result table
     function BuildFlightResultTable() {
 
         table = $('#myTable').DataTable();
@@ -219,9 +222,7 @@ $(document).ready(function() {
         });
     }
 
-
-    // Auto complete code
-
+    // Auto complete function
     $(function() {
         $('.autocomplete').each(function() {
             var apca = new apc('autocomplete', {
@@ -289,8 +290,6 @@ $(document).ready(function() {
                     // Assign city & code to hidden input elements
                     $("#" + currentElement.data("name") + "-name").val(ui.item.city);
                     $("#" + currentElement.data("name") + "-code").val(ui.item.code);
-
-
                 }
             }
 
@@ -300,5 +299,4 @@ $(document).ready(function() {
             };
         });
     });
-
 });
