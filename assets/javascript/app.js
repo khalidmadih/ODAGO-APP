@@ -163,11 +163,15 @@ $(document).ready(function() {
 
             });
 
-         setTimeout(BuildFlightResultTable, 5000);
-         // BuildFlightResultTable();   
+        setTimeout(BuildFlightResultTable, 5500);
+       
+        // BuildFlightResultTable();   
 
 
     };
+
+    
+    BuildFlightResultTable();
 
     function addToFirebase() {
 
@@ -196,8 +200,13 @@ $(document).ready(function() {
 
     };
 
-    function BuildFlightResultTable () {
-        $('#myTable').DataTable({
+    function BuildFlightResultTable() {
+
+        table = $('#myTable').DataTable();
+
+        table.destroy();
+
+        table = $('#myTable').DataTable({
             data: flightResults,
             columns: [
                 { data: 'Date' },
@@ -208,9 +217,10 @@ $(document).ready(function() {
                 { data: 'TimeA' },
                 { data: 'Status' },
                 { data: 'Gate' }
-            		]
+            ]
         });
     }
+
 
     // Auto complete code
 
