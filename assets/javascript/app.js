@@ -1,6 +1,12 @@
 $(document).ready(function() {
     $("[data-toggle=tooltip]").tooltip();
 
+    //Reload the page when modal is closed
+    $("#modal-close").on("click", function(event) {
+        event.preventDefault();
+        location.reload();
+    });
+
     // Check JS file linked
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
@@ -165,7 +171,9 @@ $(document).ready(function() {
 
                 //Condition checking for no results
                 if (!checkResults) {
-                    console.log("No results found for this route")
+                    //Show modal with error message
+                    $("#myModal").modal({show: true});
+                    console.log("No results found for this route");
                 }
                 //If there are results, build the flights result table
                 else {
