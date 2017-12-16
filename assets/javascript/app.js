@@ -69,12 +69,11 @@ $(document).ready(function() {
         console.log("Arrival: " + arrivalCity + " - " + arrivalAirport);
         console.log("Departure date: " + departureDate);
 
-        // Openweathermap settings
+        // Open weathermap settings
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
             arrivalCity + "&appid=7e0ce28483067588677241827b3bba6f";
 
         //Setting the cursor and form inputs to show form submitted
-        $('#date-input').datepicker();
         $(":input").prop("disabled", true);
 
         //Making the ajax call for weather data
@@ -187,7 +186,7 @@ $(document).ready(function() {
                 //If there are results, build the flights result table
                 else {
                     BuildFlightResultTable();
-                };
+                }
             });
     };
 
