@@ -49,7 +49,8 @@ $(document).ready(function() {
     var flightResults = [];
 
     //Looking up the city weather
-    $("#search-flight").on("click", function(event) {
+    $("#myForm").on("submit", function(event) {
+
         event.preventDefault();
 
         //Collecting data from the form
@@ -59,6 +60,10 @@ $(document).ready(function() {
         arrivalAirport = $("#arrival-city-code").val().trim();
         departureDate = $("#date-input").val().trim();
         // departureTime = $("#time-input").val().trim();
+
+        if (departureCity.length == 0 || arrivalCity.length == 0 ){
+        	return;
+        }
 
         console.log("Departure: " + departureCity + " - " + departureAirport);
         console.log("Arrival: " + arrivalCity + " - " + arrivalAirport);
