@@ -4,7 +4,7 @@ $(document).ready(function() {
     // Check JS file linked
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
-    $('#date-input').datepicker()
+    $('#date-input').datepicker();
 
     // Firebase database settings
     var config = {
@@ -52,6 +52,7 @@ $(document).ready(function() {
 
         console.log("Departure: " + departureCity + " - " + departureAirport);
         console.log("Arrival: " + arrivalCity + " - " + arrivalAirport);
+        console.log("Departure date: " +departureDate);
 
        // Openweathermap settings
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -69,6 +70,7 @@ $(document).ready(function() {
 
             // After data comes back from the request
             .done(function(response) {
+            	
              	//Variables to manipulate temprature
                 var tempConvertedF = Math.round(((response.main.temp - 273.15) * 1.8) + 32);
                 var tempConvertedC = Math.round(response.main.temp - 273.15);
@@ -77,7 +79,7 @@ $(document).ready(function() {
                
                 //Replacing the data in the page/panel
                 $("#destination-city").text(response.name);
-                $("#date-display").text(response.departureDate);
+                $("#date-display1").html(departureDate);
                 $("#description-display").text(response.weather[0].description);
                 // console.log(response.weather[0].description);
                 $("#destination-temp").text(tempConvertedF + "°F" + " / " + tempConvertedC + "°C");
@@ -87,7 +89,7 @@ $(document).ready(function() {
 
             });
 
-         //Add waether data to Firebase
+         //Add weather data to Firebase
         addToFirebase();
         //Read data from Firebase
         readFromFirebase();
