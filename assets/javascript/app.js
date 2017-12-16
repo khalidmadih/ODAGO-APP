@@ -10,7 +10,11 @@ $(document).ready(function() {
     // Check JS file linked
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
-    $('#date-input').datepicker();
+    
+    Today = moment(new Date()).format('MM/DD/YYYY');
+    console.log("Today is: "+Today);
+    $('#date-input').val(Today);
+    // $('#date-input').datepicker();
 
     // Firebase database settings
     var config = {
@@ -58,17 +62,17 @@ $(document).ready(function() {
 
         console.log("Departure: " + departureCity + " - " + departureAirport);
         console.log("Arrival: " + arrivalCity + " - " + arrivalAirport);
-        console.log("Departure date: " +departureDate);
+        console.log("Departure date: " + departureDate);
 
-       // Openweathermap settings
+        // Openweathermap settings
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
             arrivalCity + "&appid=7e0ce28483067588677241827b3bba6f";
 
         //Setting the cursor and form inputs to show form submitted
-        $(this).css('cursor', 'wait');
+        $('#date-input').datepicker();
         $(":input").prop("disabled", true);
 
-       //Making the ajax call for weather data
+        //Making the ajax call for weather data
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -76,13 +80,13 @@ $(document).ready(function() {
 
             // After data comes back from the request
             .done(function(response) {
-            	
-             	//Variables to manipulate temprature
+
+                //Variables to manipulate temprature
                 var tempConvertedF = Math.round(((response.main.temp - 273.15) * 1.8) + 32);
                 var tempConvertedC = Math.round(response.main.temp - 273.15);
                 //Building the link to the weather icon
                 var apiIcon = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-               
+
                 //Replacing the data in the page/panel
                 $("#destination-city").text(response.name);
                 $("#date-display1").html(departureDate);
@@ -95,12 +99,12 @@ $(document).ready(function() {
 
             });
 
-         //Add weather data to Firebase
+        //Add weather data to Firebase
         addToFirebase();
         //Read data from Firebase
         readFromFirebase();
         //Search for the flights
-        SearchFlight();        
+        SearchFlight();
 
     });
 
@@ -112,7 +116,7 @@ $(document).ready(function() {
             departureAirport + "&type=departure";
         console.log(queryURL);
 
-       //Making the ajax call to flights api
+        //Making the ajax call to flights api
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -123,7 +127,7 @@ $(document).ready(function() {
                 //Parse the result - because it's a string
                 var parsedResponse = JSON.parse(response);
                 console.log(parsedResponse);
-                
+
                 //Looping around the results
                 var checkResults = false;
 
@@ -172,7 +176,7 @@ $(document).ready(function() {
                 //Condition checking for no results
                 if (!checkResults) {
                     //Show modal with error message
-                    $("#myModal").modal({show: true});
+                    $("#myModal").modal({ show: true });
                     console.log("No results found for this route");
                 }
                 //If there are results, build the flights result table
