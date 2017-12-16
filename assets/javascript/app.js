@@ -10,9 +10,9 @@ $(document).ready(function() {
     // Check JS file linked
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
-    
+
     Today = moment(new Date()).format('MM/DD/YYYY');
-    console.log("Today is: "+Today);
+    console.log("Today is: " + Today);
     $('#date-input').val(Today);
     // $('#date-input').datepicker();
 
@@ -222,6 +222,9 @@ $(document).ready(function() {
         table.destroy();
 
         table = $('#myTable').DataTable({
+            language: {
+                emptyTable: 'No flights available to display'
+            },
             data: flightResults,
             columns: [
                 { data: 'Date' },
