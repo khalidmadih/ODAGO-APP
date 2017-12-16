@@ -42,3 +42,10 @@ a:hover {
   display: none;
 }
 
+#date-input{
+        background-color: white;
+    opacity: 1;
+    border: none;
+    box-shadow: none;
+}
+
