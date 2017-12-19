@@ -233,31 +233,12 @@ $(document).ready(function() {
             language: {
                 emptyTable: 'No flights available to display'
             },
-<<<<<<< HEAD
             responsive: {
                 details: true,
             },
-            //     details: {
-            //         type: 'column'
-            //     }
+            // searching: {
+            //     details:false,
             // },
-            // columnDefs: [{
-            //     className: 'control',
-            //     orderable: true,
-            //     targets: 0
-            // }],
-            // order: [1, 'asc'],
-            searching: {
-                details:true,
-            },
-=======
-            responsive: true,
-            columnDefs: [
-                { responsivePriority: 1, targets: 0 },
-                { responsivePriority: 2, targets: -2 }
-            ],
-            searching: false,
->>>>>>> 004af018512ad226fcc4dd24f53cb1154c838ed7
             data: flightResults,
             columns: [
                 { data: 'Date' },
