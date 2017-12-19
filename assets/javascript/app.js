@@ -177,7 +177,7 @@ $(document).ready(function() {
 
                         console.log(flightResults);
                         console.log(flightResults.length);
-                        $('#flightResultsCount').text(flightResults.length+ ' flights available');
+                        $('#flightResultsCount').text(flightResults.length + ' flights available');
                     }
                 }
 
@@ -233,6 +233,7 @@ $(document).ready(function() {
             language: {
                 emptyTable: 'No flights available to display'
             },
+<<<<<<< HEAD
             responsive: {
                 details: true,
             },
@@ -249,6 +250,14 @@ $(document).ready(function() {
             searching: {
                 details:true,
             },
+=======
+            responsive: true,
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: -2 }
+            ],
+            searching: false,
+>>>>>>> 004af018512ad226fcc4dd24f53cb1154c838ed7
             data: flightResults,
             columns: [
                 { data: 'Date' },
