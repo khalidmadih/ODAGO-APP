@@ -1,4 +1,4 @@
-![](https://github.com/khalidmadih/ONDAGO-APP/blob/master/assets/Image/sm_logo.jpg)
+![](https://github.com/khalidmadih/ONDAGO-APP/blob/master/assets/Image/ODG_logo.jpg)
 
 ## Description
 **_ON DA GO_** is a web application that displays the most relevant ✈️ & ⛅ information.
