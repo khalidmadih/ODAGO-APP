@@ -1,4 +1,4 @@
-![](https://github.com/khalidmadih/ONDAGO-APP/blob/master/assets/Image/ODG_logo.jpg)
+![](https://github.com/khalidmadih/ONDAGO-APP/blob/master/assets/Image/ODG_logo.png)
 
 ## Description
 **_ON DA GO_** is a web application that displays the most relevant ✈️ & ⛅ information.
@@ -7,7 +7,7 @@
 **_ON DA GO_** assists the modern traveller, with the right infomation at the palm of their hands, without the unessassary clutter that our competitors provide. We created **_ON DA GO_** to advise traveller of pertenent Airport information such as; Terminals, Gates and Status of their flight. In addition, **_ON DA GO_** displays, weather conditions pertaning to their destination city.
 
 ## Usage
-The ON DA GO application was designed with simplicity in mind. With just a few clicks you can have the most up to date information, while **_ON DA GO_**.
+The **_ON DA GO_** application was designed with simplicity in mind. With just a few clicks you can have the most up to date information, while **_ON DA GO_**.
 
 Step 1. Enter Departure City or Airport code.
 
@@ -16,3 +16,9 @@ Step 2. Enter Destination City or Airport code.
 
 
 Step 3. Search Flight!
+
+## Limitations
+The **_ON DA GO_** application, is still under development. Our search is limited to direct flights. The mobile resposive is limited to landscape mode, in smaller cellular devices.
+
+## Future Developments
+We would like **_ON DA GO_** to be a simple travel aid tool. That will eventually let users purchase, searched routes. 
