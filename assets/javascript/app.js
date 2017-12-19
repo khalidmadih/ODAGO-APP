@@ -233,7 +233,9 @@ $(document).ready(function() {
             language: {
                 emptyTable: 'No flights available to display'
             },
-            // responsive: {
+            responsive: {
+                details: true,
+            },
             //     details: {
             //         type: 'column'
             //     }
@@ -244,7 +246,9 @@ $(document).ready(function() {
             //     targets: 0
             // }],
             // order: [1, 'asc'],
-            searching: false,
+            searching: {
+                details:true,
+            },
             data: flightResults,
             columns: [
                 { data: 'Date' },

@@ -31,7 +31,10 @@ h3 {
     line-height: 30px;
 }
 
-img { max-width: 100%; }
+img { 
+	width: 65px;
+	max-width: 100%;
+}
 
 .table {
 	margin-top: 20px;
