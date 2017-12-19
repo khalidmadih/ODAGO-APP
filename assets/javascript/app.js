@@ -53,6 +53,7 @@ $(document).ready(function() {
 
         event.preventDefault();
 
+
         //Collecting data from the form
         departureCity = $("#departure-city-name").val().trim();
         departureAirport = $("#departure-city-code").val().trim();
@@ -61,8 +62,8 @@ $(document).ready(function() {
         departureDate = $("#date-input").val().trim();
         // departureTime = $("#time-input").val().trim();
 
-        if (departureCity.length == 0 || arrivalCity.length == 0 ){
-        	return;
+        if (departureCity.length == 0 || arrivalCity.length == 0) {
+            return;
         }
 
         console.log("Departure: " + departureCity + " - " + departureAirport);
@@ -90,6 +91,7 @@ $(document).ready(function() {
                 var tempConvertedC = Math.round(response.main.temp - 273.15);
                 //Building the link to the weather icon
                 var apiIcon = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+                var tempDesc = response.weather[0].description;
 
                 //Replacing the data in the page/panel
                 $("#destination-city").text(response.name);
@@ -174,6 +176,8 @@ $(document).ready(function() {
                         });
 
                         console.log(flightResults);
+                        console.log(flightResults.length);
+                        $('#flightResultsCount').text(flightResults.length+ ' flights available');
                     }
                 }
 
@@ -229,6 +233,18 @@ $(document).ready(function() {
             language: {
                 emptyTable: 'No flights available to display'
             },
+            // responsive: {
+            //     details: {
+            //         type: 'column'
+            //     }
+            // },
+            // columnDefs: [{
+            //     className: 'control',
+            //     orderable: true,
+            //     targets: 0
+            // }],
+            // order: [1, 'asc'],
+            searching: false,
             data: flightResults,
             columns: [
                 { data: 'Date' },
