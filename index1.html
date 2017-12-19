@@ -1,209 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ondago</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ONDAGO - Travel Companion</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/form-elements.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- LINK TO FIREBASE GOES HERE -->
-    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="index" type="text/css">
+    <!-- Favicon and touch icons -->
+    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"> -->
 </head>
 
 <body>
-    <div class="container">
-        <br>
-        <!-- Jumbotron -->
-
-        </script>
-        <div class="jumbotron vertical-center jumbotron-fluid">
-            <h1 class="text-center"><span class="glyphicon glyphicon-plane"></span> ON-DA'GO!</h1>
-        </div>
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Oops Sorry...</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h4>No flights are available for this route! </h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="modal-close" class="btn btn-primary" data-dismiss="modal">Close</button>
+    <!-- Top content -->
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <img src="assets/Image/ODG_logo.png" alt="logo">
+                        <h2 id="tag-line">YOUR TRAVEL COMPANION</h2>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- Sign-Up Panel
-                heres where the sign up pannel is-->
-            <div class="col-sm-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Flight Search</h3>
-                    </div>
-                    <div></div>
-                    <div class="panel-body">
-                        <!-- Sign-up Form (note the various input "types")
-                            we put the forms herer-->
-<!-- to do fix tablet and phone responsiveness -->
-<!-- is the table in a pannel,
-attempting to put the div in a pannel with no header to give a responsiveness form bootstrap -->
-                        <div class="alert alert-success">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Successfully submitted!</strong>
-                        </div>
-                        <form role="form" id="myForm" data-toggle="validator">
-                            <div class="form-group">
-                                <label for="departure-input">Departure City:</label>
-                                <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code" data-name="departure-city" required>
-                                <div class="help-block with-errors"></div>
-                                <input id="departure-city-code" type="hidden">
-                                <input id="departure-city-name" type="hidden">
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Oops Sorry...</h4>
                             </div>
-                            <div class="form-group">
-                                <label for="arrival-input">Arrival City:</label>
-                                <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code " data-name="arrival-city" required>
-                                <div class="help-block with-errors"></div>
-                                <input id="arrival-city-code" type="hidden">
-                                <input id="arrival-city-name" type="hidden">
+                            <div class="modal-body">
+                                <h4>No flights are available for this route! </h4>
                             </div>
-                            <div class="form-group">
-                                <label for="date-input">Today's Date:</label>
-                                <input class="form-control" id="date-input" type="text" readonly>
-                                
+                            <div class="modal-footer">
+                                <button type="button" id="modal-close" class="btn btn-primary" data-dismiss="modal">Close</button>
                             </div>
-                            <div class="form-group">
-                                <label for="time-input">Departure Time:</label>
-                                <input class="form-control" id="time-input" type="time">
-                            </div>
-                            <div class="form-group">
-                                <input class="btn btn-primary" id="search-flight" type="submit" value="Submit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Previous Search</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-sm-12">
-                            <h5>Departure City/Airport:</h5>
-                            <h2 id="departure-display">Phoenix</h2>
-                        </div>
-                        <div class="col-sm-12">
-                            <h5>Arrival City/Airport:</h5>
-                            <h2 id="arrival-display">New York</h2>
-                        </div>
-                        <div class="col-sm-12">
-                            <h5>Departure Date:</h5>
-                            <h2 id="date-display"></h2>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Arrival Weather -->
-            <!-- some where in here the responsiveness goes to crap -->
-
-                    <!-- put in pannel here -->
-                    <!-- any luck and this will adjust our issue -->
-
-                    <!-- nope, nope, nope.jpg -->
-                    <!-- maybe if the tabel is pulled out of the parent div and is set apart on its own, than it can be put in a pannel and set with bootstrap -->
-
-                    </div>
-                </div>
-                            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Flight Details</h3>
-                    </div>
-                      <div class="panel-body, col-sm-4">
-                        <div class="table" id="weatherInfo">
-                            <table class="table table-striped" id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>Date </th>
-                                        <th>Flight #</th>
-                                        <th>Departure </th>
-                                        <th>Time </th>
-                                        <th>Arrival </th>
-                                        <th>Time </th>
-                                        <th>Status  </th>
-                                        <th>Gate </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>12/12/2017</td>
-                                        <td>AF2456</td>
-                                        <td>Phoenix</td>
-                                        <td>7:00 AM</td>
-                                        <td>New York</td>
-                                        <td>02:00 PM</td>
-                                        <td>ON TIME</td>
-                                        <td>A32</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Search for Flights</h3>
+                                    <p>By flight route </p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-plane"></i>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <form role="form" id="myForm" action="" method="post" class="login-form" data-toggle="validator">
+                                    <div class="form-group">
+                                        <input class="form-control autocomplete" id="departure-input" type="text" placeholder="Departure" data-name="departure-city" required>
+                                        <div class="help-block with-errors" id="help-box"></div>
+                                        <input id="departure-city-code" type="hidden">
+                                        <input id="departure-city-name" type="hidden">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="Arrival " data-name="arrival-city" required>
+                                        <div class="help-block with-errors" id="help-box"></div>
+                                        <input id="arrival-city-code" type="hidden">
+                                        <input id="arrival-city-name" type="hidden">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" id="date-input" type="hidden">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn" id="search-flight" value="submit">Let's go!</button>
+                                    </div>
+                                </form>
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <p>Previous Search</p>
+                                        <h3 id="departure-display">Phoenix</h3>
+                                        <p> TO </p>
+                                        <h3 id="arrival-display">New York</h3>
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-            </div>
-            <!-- Arrival Weather -->
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Destination Weather Forecasts</h3>
                     </div>
-                    <div class="panel-body" id="weatherInfo">
-                        <div class="col-sm-6">
-                            <h2 id="destination-city">New York</h2>
-                            <h5 id="date-display1">12/12/2017</h5>
-                            <h4 id="description-display">Sunny</h4>
-                        </div>
-                        <div class="col-sm-2"><img id="weather-icon" src="https://openweathermap.org/img/w/01d.png"></div>
-                        <div class="col-sm-10">
-                            <h1 id="destination-temp">54 F</h1>
+                    <div class="col-sm-8">
+                        <div class="form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h2 id="destination-city" style="color:white">New York</h2>
+                                    <img id="weather-icon" src="https://openweathermap.org/img/w/01d.png">
+                                    <h3 id="description-display">Sunny</h3>
+                                    <p id="destination-temp">54 F</p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-sun-o"></i>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Your flight options</h3>
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-suitcase"></i>
+                                    </div>
+                                    <h3 id="flightResultsCount">0 flights to display</h3>
+                                </div>
+                                <div class="table">
+                                    <table class="table table-striped" id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Flight#</th>
+                                                <th>Departure</th>
+                                                <th>Time </th>
+                                                <th>Arrival</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                                <th>Gate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>12/12/2017</td>
+                                                <td>AF2456</td>
+                                                <td>Phoenix</td>
+                                                <td>7:00 AM</td>
+                                                <td>New York</td>
+                                                <td>02:00 PM</td>
+                                                <td>ON TIME</td>
+                                                <td>A32</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <P> © 2017 Copyright: The Meteors</P>
         </div>
     </div>
-    <!-- Script links are all listed after this : -->
-    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
-    <!-- firebase persestance link above -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <!-- <div class="footer-border"></div> -->
+                    <p>© 2017 Copyright: Brought to you by the <strong>The Meteors</strong> (Kal, Jeremy &amp; Ralph).</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript -->
+    <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!--  Autocomplete scripts -->
-
-    <!-- these will fill in the user fields with the proper airport codes
-     -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
     <script src="assets/javascript/air-port-codes-api-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.js"></script>
-    <script src="assets/javascript/bootstrap-datepicker.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.backstretch.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
     <script src="assets/javascript/app.js"></script>
+    </div>
 </body>
+
 </html>
