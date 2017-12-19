@@ -26,164 +26,164 @@
 
     <div class="container">
 
-        <!-- MAIN LOGO -->
-        <img  style="width: 150px; " id="main-logo" src="assets/Image/color_logo.png" alt="logo" >
+                <!-- MAIN LOGO -->
+                <img  style="width: 150px; " id="main-logo" src="assets/Image/color_logo.png" alt="logo" >
 
-        <!-- Modal  -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h3 class="modal-title">We're Sorry...</h3>
-                    </div>
-                    <div class="modal-body">
-                        <h4>We do not have any direct flights to your destionation </h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="modal-close" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="row">
-
-            <!-- Flight Search Panel-->
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Flight Search</h3>
-                    </div>
-                    <div class="panel-body">
-                        <!-- Sign-up Form (note the various input "types")-->
-                        <div class="alert alert-success">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Successfully submitted!</strong>
-                        </div>
-                        <form role="form" id="myForm" data-toggle="validator">
-                            <div class="form-group">
-                                <label for="departure-input">Departure City:</label>
-                                <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code" data-name="departure-city" required>
-                                <div class="help-block with-errors"></div>
-                                <input id="departure-city-code" type="hidden">
-                                <input id="departure-city-name" type="hidden">
+                <!-- Modal  -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">We're Sorry...</h3>
                             </div>
-                            <div class="form-group">
-                                <label for="arrival-input">Arrival City:</label>
-                                <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code " data-name="arrival-city" required>
-                                <div class="help-block with-errors"></div>
-                                <input id="arrival-city-code" type="hidden">
-                                <input id="arrival-city-name" type="hidden">
+                            <div class="modal-body">
+                                <h4>We do not have any direct flights to your destionation </h4>
                             </div>
-                            <div class="form-group">
-                                <label for="date-input">Today's Date:</label>
-                                <input class="form-control" id="date-input" type="text" readonly>
-                                
+                            <div class="modal-footer">
+                                <button type="button" id="modal-close" class="btn btn-primary" data-dismiss="modal">Close</button>
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="time-input">Departure Time:</label>
-                                <input class="form-control" id="time-input" type="time">
-                            </div> -->
-                            <div class="form-group">
-                                <input class="btn btn-primary" id="search-flight" type="submit" value="Search Flights">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="row">
+
+                    <!-- Flight Search Panel-->
+                    <div class="col-lg-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Flight Search</h3>
                             </div>
-                        </form>
+                            <div class="panel-body">
+                                <!-- Sign-up Form (note the various input "types")-->
+                                <div class="alert alert-success">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Successfully submitted!</strong>
+                                </div>
+                                <form role="form" id="myForm" data-toggle="validator">
+                                    <div class="form-group">
+                                        <label for="departure-input">Departure City:</label>
+                                        <input class="form-control autocomplete" id="departure-input" type="text" placeholder="City name or airport code" data-name="departure-city" required>
+                                        <div class="help-block with-errors"></div>
+                                        <input id="departure-city-code" type="hidden">
+                                        <input id="departure-city-name" type="hidden">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="arrival-input">Arrival City:</label>
+                                        <input class="form-control autocomplete" id="arrival-input" type="text" placeholder="City name or airport code " data-name="arrival-city" required>
+                                        <div class="help-block with-errors"></div>
+                                        <input id="arrival-city-code" type="hidden">
+                                        <input id="arrival-city-name" type="hidden">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date-input">Today's Date:</label>
+                                        <input class="form-control" id="date-input" type="text" readonly>
+                                        
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="time-input">Departure Time:</label>
+                                        <input class="form-control" id="time-input" type="time">
+                                    </div> -->
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" id="search-flight" type="submit" value="Search Flights">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Destiantion Weather -->
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Destination Weather Forecasts</h3>
+                            </div>
+                            <div class="panel-body" id="weatherInfo">
+                                <div class="col-sm-12">
+                                    <h2 id="destination-city">New York</h2>
+                                    <h5 id="date-display1">12/12/2017</h5>
+                                    <h4 id="description-display">Sunny</h4>
+                                </div>
+                                <div class="col-sm-2"><img id="weather-icon" src="https://openweathermap.org/img/w/01d.png"></div>
+                                <div class="col-sm-10">
+                                    <h1 id="destination-temp">54 F</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flight Table  -->
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Flight Details</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table" id="weatherInfo">
+                                    <table class="table table-striped" id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Flight#</th>
+                                                <th>Departure</th>
+                                                <th>Time</th>
+                                                <th>Arrival</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                                <th>Gate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>12/12/2017</td>
+                                                <td>AF2456</td>
+                                                <td>Phoenix</td>
+                                                <td>7:00 AM</td>
+                                                <td>New York</td>
+                                                <td>02:00 PM</td>
+                                                <td>ON TIME</td>
+                                                <td>A32</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Search Log  -->
+                    <!-- Made the log display inline instead of a block format -->
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Previous Search</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-4">
+                                    <h3>Departure:</h3>
+                                    <h4 id="departure-display">Phoenix</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h3>Destination:</h3>
+                                    <h4 id="arrival-display">New York</h4>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h3>Date:</h3>
+                                    <h4 id="date-display"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <!-- Destiantion Weather -->
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Destination Weather Forecasts</h3>
-                    </div>
-                    <div class="panel-body" id="weatherInfo">
-                        <div class="col-sm-12">
-                            <h2 id="destination-city">New York</h2>
-                            <h5 id="date-display1">12/12/2017</h5>
-                            <h4 id="description-display">Sunny</h4>
-                        </div>
-                        <div class="col-sm-2"><img id="weather-icon" src="https://openweathermap.org/img/w/01d.png"></div>
-                        <div class="col-sm-10">
-                            <h1 id="destination-temp">54 F</h1>
-                        </div>
-                    </div>
+                <!-- Footer -->
+                <div class="footer">
+                    <P> © 2017 Copyright: The Meteors</P>
                 </div>
-            </div>
-
-            <!-- Flight Table  -->
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Flight Details</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table" id="weatherInfo">
-                            <table class="table table-striped" id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Flight#</th>
-                                        <th>Departure</th>
-                                        <th>Time</th>
-                                        <th>Arrival</th>
-                                        <th>Time</th>
-                                        <th>Status</th>
-                                        <th>Gate</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>12/12/2017</td>
-                                        <td>AF2456</td>
-                                        <td>Phoenix</td>
-                                        <td>7:00 AM</td>
-                                        <td>New York</td>
-                                        <td>02:00 PM</td>
-                                        <td>ON TIME</td>
-                                        <td>A32</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Previous Search Log  -->
-            <!-- Made the log display inline instead of a block format -->
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Previous Search</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-sm-4">
-                            <h3>Departure:</h3>
-                            <h4 id="departure-display">Phoenix</h4>
-                        </div>
-                        <div class="col-sm-4">
-                            <h3>Destination:</h3>
-                            <h4 id="arrival-display">New York</h4>
-                        </div>
-                        <div class="col-sm-4">
-                            <h3>Date:</h3>
-                            <h4 id="date-display"></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <P> © 2017 Copyright: The Meteors</P>
-        </div>
     </div>
     <!-- Script links are all listed after this : -->
     <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>

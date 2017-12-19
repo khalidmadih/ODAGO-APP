@@ -84,6 +84,10 @@ td {
 	opacity: 0.8;
 }
 
+#tag-line {
+	color:#2b3d59;
+}
+
 ::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
 ::selection { background: #19b9e7; color: #fff; text-shadow: none; }
 
