@@ -177,7 +177,7 @@ $(document).ready(function() {
 
                         console.log(flightResults);
                         console.log(flightResults.length);
-                        $('#flightResultsCount').text(flightResults.length + ' flights available'+ " on " + Today);
+                        $('#flightResultsCount').text(flightResults.length + ' flights available' + " on " + Today);
                     }
                 }
 
