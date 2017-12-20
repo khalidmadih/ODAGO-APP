@@ -85,7 +85,6 @@ $(document).ready(function() {
 
             // After data comes back from the request
             .done(function(response) {
-
                 //Variables to manipulate temprature
                 var tempConvertedF = Math.round(((response.main.temp - 273.15) * 1.8) + 32);
                 var tempConvertedC = Math.round(response.main.temp - 273.15);
