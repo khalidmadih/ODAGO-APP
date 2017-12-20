@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/form-elements.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_R.css">
     <!-- Favicon Icons -->
     <link rel="shortcut icon" href="assets/Image/favicon.ico">
     <!-- Apple Icons -->
@@ -33,7 +33,7 @@
                 <!-- Logo Header -->
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 text">
-                        <img src="assets/Image/ODG_logo.png" style="width: 500px" alt="logo">
+                        <img src="assets/Image/ODG_logo.png" alt="logo" id="logo">
                         <h2 id="tag-line">YOUR TRAVEL COMPANION</h2>
                     </div>
                 </div>
@@ -58,11 +58,11 @@
                 <!-- Left side panel -->
                 <div class="row">
                     <!-- Flight Search Panel -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 container-box" >
                         <div class="form-box">
                             <div class="form-top">
                                 <div class="form-top-left">
-                                    <h1 id="Flight-Plane" style="color:white">Search All Flights</h1>
+                                    <h1 class= "box-title" id="Flight-Plane">Search All Flights</h1>
                                 </div>
                                 <div class="form-top-right">
                                     <i class="fa fa-plane"></i>
@@ -94,9 +94,9 @@
                                 <!-- Previous Search -->
                                 <div class="form-top">
                                     <div class="form-top-left">
-                                        <h1 style="color:white">Previous Search</h1>
+                                        <h1 class= "box-title">Previous Search</h1>
                                         <h3 id="departure-display">Phoenix</h3>
-                                        <p> TO </p>
+                                        <h3 id="separator"> TO </h3>
                                         <h3 id="arrival-display">New York</h3>
                                     </div>
                                     <div class="form-top-right">
@@ -108,14 +108,14 @@
                     </div>
 
                     <!-- Weather & Flight Options -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 container-box">
                         <div class="form-box">
                             <div class="form-top">
                                 <div class="form-top-left">
-                                    <h1 id="destination-city" style="color:white; font-size: 45px">New York</h1>
+                                    <h1 id="destination-city" class= "box-title">New York</h1>
                                     <img id="weather-icon" src="https://openweathermap.org/img/w/01d.png">
-                                    <h2 id="description-display" style="color:white">Sunny</h2>
-                                    <h1 id="destination-temp" style="color:white; font-size: 35px">54 ° F</h1>
+                                    <h2 id="description-display">Sunny</h2>
+                                    <h1 id="destination-temp">54 ° F</h1>
                                 </div>
                                 <div class="form-top-right">
                                     <i class="fa fa-sun-o"></i>
@@ -124,13 +124,11 @@
                             <div class="form-bottom">
                                 <div class="form-top">
                                     <div class="form-top-left">
-                                        <h2 style="color:white">Your flight options</h2>
+                                        <h2 class= "box-title">Your flight options</h2>
                                     </div>
-                                    <br>
-                                    <br>
                                     <div class="form-top-right">
-                                        <i class="fa fa-suitcase"></i>
-                                    </div>
+                                     <i class="fa fa-suitcase"></i>
+                                    </div><br><br>
                                     <h1 id="flightResultsCount">0 flights to display</h1>
                                 </div>
                             </div>
@@ -139,6 +137,7 @@
                 </div>
                 <!-- Adding table to seperate element -->
                 <br>
+                <div class="form-bottom">
                 <div class="row">
 
                     <div class="col-lg-12">
@@ -170,6 +169,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

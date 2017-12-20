@@ -11,7 +11,7 @@ $(document).ready(function() {
     console.log("Hello Meteors..your JS file is correctly linked ;) !");
 
 
-    Today = moment(new Date()).format('MM/DD/YYYY');
+    var Today = moment(new Date()).format('LL');
     console.log("Today is: " + Today);
     $('#date-input').val(Today);
     // $('#date-input').datepicker();
@@ -142,11 +142,11 @@ $(document).ready(function() {
                         //Formating the results & logging to the console for debugging
                         console.log("Flight from : " + parsedResponse[i].departure.iataCode + " to " + parsedResponse[i].arrival.iataCode + " : " + parsedResponse[i].flight.iataNumber + " - " + parsedResponse[i].status + " on ");
                         checkResults = true;
-                        departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('MM/DD/YYYY');
+                        departureDateFL = moment(parsedResponse[i].departure.scheduledTime).format('L');
                         console.log("Date : " + departureDateFL);
-                        departureTimeFL = moment(parsedResponse[i].departure.scheduledTime).format('HH:MM A');
+                        departureTimeFL = moment(parsedResponse[i].departure.scheduledTime).format('LT');
                         console.log("Time : " + departureTimeFL);
-                        arrivalTimeFL = moment(parsedResponse[i].arrival.scheduledTime).format('HH:MM A');
+                        arrivalTimeFL = moment(parsedResponse[i].arrival.scheduledTime).format('LT');
                         gateFL = parsedResponse[i].arrival.gate;
 
                         //Replae with TBD if Gate is undefined
@@ -177,7 +177,7 @@ $(document).ready(function() {
 
                         console.log(flightResults);
                         console.log(flightResults.length);
-                        $('#flightResultsCount').text(flightResults.length + ' flights available');
+                        $('#flightResultsCount').text(flightResults.length + ' flights available'+ " on " + Today);
                     }
                 }
 
@@ -213,7 +213,7 @@ $(document).ready(function() {
 
         firebase.database().ref().on("value", function(snapshot) {
 
-            var departureDateFormatted = moment(snapshot.val().departureDate).format('MM/DD/YYYY');
+            var departureDateFormatted = moment(snapshot.val().departureDate).format('L');
 
             $("#departure-display").text(snapshot.val().departureCity + " (" + snapshot.val().departureAirport + ")");
             $("#arrival-display").text(snapshot.val().arrivalCity + " (" + snapshot.val().arrivalAirport + ")");
@@ -236,9 +236,7 @@ $(document).ready(function() {
             responsive: {
                 details: true,
             },
-            // searching: {
-            //     details:false,
-            // },
+            searching: false,
             data: flightResults,
             columns: [
                 { data: 'Date' },
