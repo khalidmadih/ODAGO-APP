@@ -17,8 +17,6 @@ Step 2. Enter Destination City or Airport code.
 
 Step 3. Search Flight!
 
-## Limitations
-The **_ON DA GO_** application, is still under development. Our search is limited to direct flights. The mobile resposive is limited to landscape mode, in smaller cellular devices.
 
 ## Future Developments
 We would like **_ON DA GO_** to be a simple travel aid tool. That will eventually let users purchase, searched routes. 
